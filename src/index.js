@@ -5,7 +5,6 @@ import 'semantic-ui-css/semantic.min.css'
 import "./styles/index.css";
 import "./styles/button.css";
 
-
 ReactDOM.render(
   <React.StrictMode>
     <App />

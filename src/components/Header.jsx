@@ -1,12 +1,18 @@
 import React from "react";
-import { Menu } from "semantic-ui-react";
+import { Menu as header } from "semantic-ui-react";
 import { Link } from "react-router-dom";
 
 const Header = () => {
   return (
-    <Menu as={Link} to={{ pathname: "/" }} inverted data-cy="header" >
-      <Menu.Item className="siteName">News In Progress - Admin Site</Menu.Item>
-    </Menu>
+    <Link
+      to={{
+        pathname: "/",
+      }}
+    >
+      <header className="siteName" inverted data-cy="header">
+        News In Progress - Admin Site
+      </header>
+    </Link>
   );
 };
 

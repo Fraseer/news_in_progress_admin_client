@@ -1,15 +1,17 @@
 button {
-  width: 20rem;
-  height: 7rem;
-  font-size: 20px;
+  width: 40rem;
+  height: 15rem;
+  font-size: 27px;
   text-align: center;
   line-height: 7rem;
-  font-family: sans-serif;
+  font-family:monospace;
   text-transform: uppercase;
   letter-spacing: 1px;
   position: relative;
   transition: 0.3s;
   margin: 3rem;
+  left: 25%;
+  margin-top: 15rem;
 }
 
 button::before,
@@ -30,7 +32,7 @@ button::before {
 }
 
 button::after {
-    background-color: rgb(194, 17, 17);
+    background-color: rgb(7, 119, 139);
     transform: translate(1.5rem, 1.5rem);
     z-index: -2;
 }
@@ -41,7 +43,7 @@ button:hover {
 }
 
 button:hover::before {
-    background-color: rgb(194, 17, 17);
+    background-color: rgb(7, 119, 139);
 }
 
 button:hover::after {
