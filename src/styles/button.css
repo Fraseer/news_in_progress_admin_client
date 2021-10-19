@@ -1,7 +1,7 @@
 button {
   width: 40rem;
   height: 15rem;
-  font-size: 27px;
+  font-size: 25px;
   text-align: center;
   line-height: 7rem;
   font-family:monospace;
@@ -10,8 +10,11 @@ button {
   position: relative;
   transition: 0.3s;
   margin: 3rem;
-  left: 25%;
-  margin-top: 15rem;
+  margin-top: 10rem;
+}
+
+.button-postion{
+    text-align: center;
 }
 
 button::before,

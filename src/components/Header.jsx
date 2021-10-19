@@ -1,5 +1,4 @@
 import React from "react";
-import { Menu as header } from "semantic-ui-react";
 import { Link } from "react-router-dom";
 
 const Header = () => {
@@ -9,7 +8,7 @@ const Header = () => {
         pathname: "/",
       }}
     >
-      <header className="siteName" inverted data-cy="header">
+      <header className="siteName" data-cy="header">
         News In Progress - Admin Site
       </header>
     </Link>

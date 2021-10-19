@@ -1,10 +1,9 @@
 import React from "react";
-import { Button } from "semantic-ui-react";
 import { Link } from "react-router-dom";
 
 export const HomePage = () => {
   return (
-    <>
+    <div className="button-postion">
       <Link
         to={{
           pathname: "/create-article",
@@ -19,7 +18,7 @@ export const HomePage = () => {
       >
         <button data-cy="review-articles">Review Articles</button>
       </Link>
-    </>
+    </div>
   );
 };
 
