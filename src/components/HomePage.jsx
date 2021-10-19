@@ -5,24 +5,20 @@ import { Link } from "react-router-dom";
 export const HomePage = () => {
   return (
     <>
-      <Button
-        data-cy="add-article"
-        as={Link}
+      <Link
         to={{
           pathname: "/create-article",
         }}
       >
-        Create Article
-      </Button>
-      <Button
-        data-cy="review-articles"
-        as={Link}
+        <button data-cy="add-article">Create Article</button>
+      </Link>
+      <Link
         to={{
           pathname: "/review-articles",
         }}
       >
-        Review Articles
-      </Button>
+        <button data-cy="review-articles">Review Articles</button>
+      </Link>
     </>
   );
 };
