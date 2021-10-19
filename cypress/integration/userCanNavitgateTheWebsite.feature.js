@@ -1,9 +1,5 @@
 describe("User can navigate to the app", () => {
   beforeEach(() => {
-    // cy.intercept("GET", "**api/articles**", {
-    //   fixture: "indexRespondsFromApi.json",
-    // });
-
     cy.visit("/");
   });
 
