@@ -7,7 +7,7 @@ describe("User can navigate to the app", () => {
     cy.visit("/");
   });
 
-  describe("and on the welcome page", () => {
+  describe("and on the home page", () => {
     it("it is expected to display a header", () => {
       cy.get("[data-cy=header]").should("be.visible");
       cy.get("[data-cy=header]").should(
@@ -17,18 +17,25 @@ describe("User can navigate to the app", () => {
     });
 
     it("is expected to display a add article button", () => {
-      cy.get("[data-cy=add_articles]").should("be.visible");
+      cy.get("[data-cy=add-article]").should("be.visible");
     });
 
     it("is expected to display a review articles button", () => {
-      cy.get("[data-cy=review_articles]").should("be.visible");
+      cy.get("[data-cy=review-articles]").should("be.visible");
     });
   });
 
   describe("and after clicking the add article button", () => {
-    before(() => {
-      cy.get("[data-cy=add-articles]").click()
+    it("is expected to go to the create article page", () => {
+      cy.get("[data-cy=add-article]").click();
+      cy.url().should("eq", "http://localhost:3000/create-article");
     });
-    it("", () => {});
+  });
+
+  describe("and after clicking the review articles button", () => {
+    it("is expected to go to the review articles page", () => {
+      cy.get("[data-cy=review-articles]").click();
+      cy.url().should("eq", "http://localhost:3000/review-articles");
+    });
   });
 });
