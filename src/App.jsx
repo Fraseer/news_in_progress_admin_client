@@ -11,8 +11,8 @@ const App = () => {
       <Header />
       <Switch>
         <Route exact path="/" component={HomePage}></Route>
-        <Route exact path="create-article" component={CreateArticle}></Route>
-        <Route exact path="review-articles" component={ReviewArticles}></Route>
+        <Route exact path="/create-article" component={CreateArticle}></Route>
+        <Route exact path="/review-articles" component={ReviewArticles}></Route>
       </Switch>
     </BrowserRouter>
   );
