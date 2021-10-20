@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 
 export const HomePage = () => {
   return (
-    <div className="button-postion">
+    <div className="center-postion">
       <Link
         to={{
           pathname: "/create-article",

@@ -13,10 +13,6 @@ button {
   margin-top: 10rem;
 }
 
-.button-postion {
-  text-align: center;
-}
-
 button::before,
 button::after {
   content: "";
