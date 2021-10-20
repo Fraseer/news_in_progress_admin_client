@@ -1,0 +1,9 @@
+.site-name {
+  font-size: 3.3em;
+  text-align: center;
+  font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; 
+}
+
+body {
+  background-color: rgb(88, 88, 88);
+}
