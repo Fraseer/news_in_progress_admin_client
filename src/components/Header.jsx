@@ -12,7 +12,7 @@ const Header = () => {
       }}
       widths="1"
     >
-      <MenuItem className="siteName" data-cy="header">
+      <MenuItem className="site-name" data-cy="header">
         News In Progress - Admin Site
       </MenuItem>
     </Menu>
