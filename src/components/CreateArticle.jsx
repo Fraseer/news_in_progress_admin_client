@@ -3,11 +3,13 @@ import { Header, Container, Form, Button } from "semantic-ui-react";
 import SemanticDatepicker from "react-semantic-ui-datepickers";
 import "react-semantic-ui-datepickers/dist/react-semantic-ui-datepickers.css";
 import _ from "lodash";
+import { Article } from "../modules/apiHelper";
 
 const CreateArticle = () => {
   // eslint-disable-next-line no-unused-vars
   const [currentDate, setNewDate] = useState(null);
   const onChange = (event, data) => setNewDate(data.value);
+  let article = {};
 
   const options = [
     "World News",
@@ -29,9 +31,21 @@ const CreateArticle = () => {
       categoryOptions.push({
         text: options,
         value: _.camelCase(options),
+        datacy: options
       });
     });
   };
+
+  useEffect(() => {
+    Article.create(article);
+  }, [article]);
+
+  let title
+  let journalist
+  let lede
+  let category
+  let date
+  let body
 
   return (
     <Container>
@@ -44,18 +58,26 @@ const CreateArticle = () => {
         Create Article
       </Header>
       <Form size="huge" data-cy="create-article">
-        <Form.Input data-cy="title-input" placeholder="Title" />
-        <Form.Input data-cy="journalist-input" placeholder="Journalists" />
-        <Form.Input data-cy="lede-input" placeholder="Lede" />
+        <Form.Input data-cy="title-input" placeholder="Title" value={title} />
+        <Form.Input
+          data-cy="journalist-input"
+          placeholder="Journalists"
+          value={journalist}
+        />
+        <Form.Input data-cy="lede-input" placeholder="Lede" value={lede} />
         <Form.Group>
           <Form.Select
             data-cy="category-input"
             placeholder="Category"
             options={categoryOptions}
           />
-          <SemanticDatepicker onChange={onChange} />
+          <SemanticDatepicker
+            data-cy="date-input"
+            onChange={onChange}
+            value={date}
+          />
         </Form.Group>
-        <Form.TextArea data-cy="body-input" placeholder="Body" />
+        <Form.TextArea data-cy="body-input" placeholder="Body" value={body} />
         <Button data-cy="submit-button">Submit</Button>
       </Form>
     </Container>
