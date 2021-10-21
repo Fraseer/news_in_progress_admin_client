@@ -16,7 +16,7 @@ describe("User can create an article", () => {
     cy.get("[data-cy=journalist-input]").type("Frank FakeName");
     cy.get("[data-cy=lede-input]").type("What going on");
     cy.get("[data-cy=category-input]").click().within(() => {
-      cy.get("Business").click();
+      cy.contains("Business").click();
     })
     cy.get("[data-cy=body-input]").type("Best story in the world");
     cy.get("[data-cy=submit-button]").click();
