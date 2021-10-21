@@ -7,6 +7,12 @@ import "./styles/index.css";
 import "./styles/button.css";
 import store from "./state/store/configureStore";
 
+if (!process.env.NODE_ENV || process.env.NODE_ENV === "development") {
+  axios.defaults.baseURL = "http://localhost:3000";
+} else {
+  axios.defaults.baseURL = "https://news-in-progress-api.herokuapp.com";
+}
+
 window.store = store
 ReactDOM.render(
   <Provider store={store}>

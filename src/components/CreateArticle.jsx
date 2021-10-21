@@ -31,21 +31,20 @@ const CreateArticle = () => {
       categoryOptions.push({
         text: options,
         value: _.camelCase(options),
-        datacy: options
       });
     });
   };
 
   useEffect(() => {
-    Article.create(article);
-  }, [article]);
+    Article.create();
+  }, []);
 
-  let title
-  let journalist
-  let lede
-  let category
-  let date
-  let body
+  let title;
+  let journalist;
+  let lede;
+  let category;
+  let date;
+  let body;
 
   return (
     <Container>
