@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import { useEffect } from "react";
 import _ from "lodash";
 
 const CategoryList = () => {
@@ -14,6 +14,7 @@ const CategoryList = () => {
 
   useEffect(() => {
     optionsLoop();
+    // eslint-disable-next-line
   }, []);
 
   let categoryOptions = [];
