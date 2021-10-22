@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useForm } from "react-hook-form";
 import { Header, Container, Form, Button, Modal } from "semantic-ui-react";
-import "react-semantic-ui-datepickers/dist/react-semantic-ui-datepickers.css";
 import { Article } from "../modules/apiHelper";
 import CategoryList from "./CategoryList";
 
@@ -19,13 +18,13 @@ const CreateArticle = () => {
 
   const { register, handleSubmit, setValue } = useForm();
   const onSubmit = (article) => {
-    Article.create(
-      { article }.then((response) => {
-        if (response.data.status === "success") {
-          setOpen(true);
-        }
-      })
-    );
+    Article.create({ article }).then((response) => {
+      if (
+        response.data.message === "Your article has been successfully created"
+      ) {
+        setOpen(true);
+      }
+    });
   };
 
   let categoryOptions = CategoryList();
@@ -100,8 +99,8 @@ const CreateArticle = () => {
         size="small"
       >
         <Modal.Content>
-          <h1 data-cy="registration-message">
-            Your article has successfully been created
+          <h1 data-cy="article-creation">
+            Your article has been successfully created
           </h1>
         </Modal.Content>
       </Modal>

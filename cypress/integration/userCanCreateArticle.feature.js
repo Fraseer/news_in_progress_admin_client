@@ -1,7 +1,7 @@
 describe("User can create an article", () => {
   beforeEach(() => {
     cy.intercept("POST", "**/api/articles**", {
-      message: "Your article has successfully been created",
+      message: "Your article has been successfully created",
     });
 
     cy.visit("/");
@@ -24,9 +24,9 @@ describe("User can create an article", () => {
       });
     cy.get("[data-cy=body-input]").type("Best story in the world");
     cy.get("[data-cy=submit-button]").click();
-    cy.get("[data-cy=registration-message]").should(
+    cy.get("[data-cy=article-creation]").should(
       "contain",
-      "Your article has successfully been created"
+      "Your article has been successfully created"
     );
   });
 });
