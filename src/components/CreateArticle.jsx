@@ -19,6 +19,8 @@ const CreateArticle = () => {
     Article.create({ article });
   };
 
+  let categoryOptions = CategoryList()
+  
   return (
     <Container>
       <Header
@@ -58,7 +60,17 @@ const CreateArticle = () => {
             setValue(name, value);
           }}
         />
-        <CategoryList />
+        <Form.Select
+          data-cy="category-input"
+          placeholder="Category"
+          options={categoryOptions}
+          name="category"
+          value={categoryOptions}
+          onChange={(e, { name, value }) => {
+            
+            setValue(name, value);
+          }}
+        />
         <Form.TextArea
           data-cy="body-input"
           placeholder="Body"

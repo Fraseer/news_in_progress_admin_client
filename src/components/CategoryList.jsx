@@ -1,7 +1,5 @@
 import React, { useEffect } from "react";
-import { Form } from "semantic-ui-react";
 import _ from "lodash";
-
 
 const CategoryList = () => {
   const options = [
@@ -20,7 +18,8 @@ const CategoryList = () => {
 
   let categoryOptions = [];
   const optionsLoop = () => {
-    options.forEach((options) => {
+    
+    options?.forEach((options) => {
       categoryOptions.push({
         text: options,
         value: _.camelCase(options),
@@ -28,18 +27,7 @@ const CategoryList = () => {
     });
   };
 
-  return (
-    <Form.Select
-      data-cy="category-input"
-      placeholder="Category"
-      options={categoryOptions}
-      name="category"
-      value={categoryOptions.value}
-      // onChange={(e, { name, value }) => {
-      //   setValue(name, value);
-      // }}
-    />
-  );
+  return (categoryOptions);
 };
 
 export default CategoryList;
