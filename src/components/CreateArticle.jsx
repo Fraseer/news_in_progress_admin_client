@@ -1,15 +1,19 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect } from "react";
 import { Header, Container, Form, Button } from "semantic-ui-react";
-import SemanticDatepicker from "react-semantic-ui-datepickers";
 import "react-semantic-ui-datepickers/dist/react-semantic-ui-datepickers.css";
 import _ from "lodash";
 import { Article } from "../modules/apiHelper";
+import { useForm } from "react-hook-form";
 
 const CreateArticle = () => {
-  // eslint-disable-next-line no-unused-vars
-  const [currentDate, setNewDate] = useState(null);
-  const onChange = (event, data) => setNewDate(data.value);
-  let article = {};
+  useEffect(() => {
+    register("name");
+  }, []);
+
+  const { register, handleSubmit, setValue } = useForm();
+  const onSubmit = (data) => {
+    console.log(data);
+  };
 
   const options = [
     "World News",
@@ -39,13 +43,6 @@ const CreateArticle = () => {
     Article.create();
   }, []);
 
-  let title;
-  let journalist;
-  let lede;
-  let category;
-  let date;
-  let body;
-
   return (
     <Container>
       <Header
@@ -56,28 +53,33 @@ const CreateArticle = () => {
       >
         Create Article
       </Header>
-      <Form size="huge" data-cy="create-article">
-        <Form.Input data-cy="title-input" placeholder="Title" value={title} />
+      <Form
+        size="huge"
+        data-cy="create-article"
+        onSubmit={handleSubmit(onSubmit)}
+      >
         <Form.Input
-          data-cy="journalist-input"
-          placeholder="Journalists"
-          value={journalist}
+          name="name"
+          data-cy="title-input"
+          placeholder="Title"
+          onChange={async (e, { name, value }) => {
+            setValue(name, value);
+          }}
         />
-        <Form.Input data-cy="lede-input" placeholder="Lede" value={lede} />
+        <Form.Input data-cy="journalist-input" placeholder="Journalists" />
+        <Form.Input data-cy="lede-input" placeholder="Lede" />
         <Form.Group>
           <Form.Select
             data-cy="category-input"
             placeholder="Category"
             options={categoryOptions}
-          />
-          <SemanticDatepicker
-            data-cy="date-input"
-            onChange={onChange}
-            value={date}
+            value={categoryOptions.value}
           />
         </Form.Group>
-        <Form.TextArea data-cy="body-input" placeholder="Body" value={body} />
-        <Button data-cy="submit-button">Submit</Button>
+        <Form.TextArea data-cy="body-input" placeholder="Body" />
+        <Button data-cy="submit-button" type="submit">
+          Submit
+        </Button>
       </Form>
     </Container>
   );

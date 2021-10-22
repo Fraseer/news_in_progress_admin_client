@@ -5,8 +5,8 @@ const Article = {
   async create(article) {
     const params = { article: article }
     try {
-      const response = await axios.post(/api/articles, params, {
-        headers: auth_headers
+      const response = await axios.post("/api/articles", params, {
+        // headers: auth_headers
         // params: {
         //   articles: {
         //     title: article.title,

@@ -1,8 +1,8 @@
 describe("User can create an article", () => {
   beforeEach(() => {
-    cy.intercept("POST", "**/api/articles**", {
-      fixture: "",
-    });
+    // cy.intercept("POST", "**/api/articles**", {
+    //   fixture: "",
+    // });
 
     cy.visit("/");
     cy.get("[data-cy=add-article]").click();
@@ -22,6 +22,11 @@ describe("User can create an article", () => {
       .within(() => {
         cy.contains("Business").click();
       });
+    // cy.get("[data-cy=date-input]")
+    //   .click()
+    //   .within(() => {
+    //     cy.contains("22").click();
+    //   });
     cy.get("[data-cy=body-input]").type("Best story in the world");
     cy.get("[data-cy=submit-button]").click();
   });

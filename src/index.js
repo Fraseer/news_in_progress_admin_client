@@ -6,6 +6,7 @@ import "semantic-ui-css/semantic.min.css";
 import "./styles/index.css";
 import "./styles/button.css";
 import store from "./state/store/configureStore";
+import axios from "axios"
 
 if (!process.env.NODE_ENV || process.env.NODE_ENV === "development") {
   axios.defaults.baseURL = "http://localhost:3000";
