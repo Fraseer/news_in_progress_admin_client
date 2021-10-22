@@ -1,8 +1,8 @@
 describe("User can create an article", () => {
   beforeEach(() => {
-    // cy.intercept("POST", "**/api/articles**", {
-    //   fixture: "",
-    // });
+    cy.intercept("POST", "**/api/articles**", {
+      fixture: "createArticleResponse.json",
+    });
 
     cy.visit("/");
     cy.get("[data-cy=add-article]").click();

@@ -7,13 +7,22 @@ import { useForm } from "react-hook-form";
 
 const CreateArticle = () => {
   useEffect(() => {
-    register("name");
+    register("title");
+    register("journalist");
+    register("lede");
+    register("category");
+    register("body");
   }, []);
 
   const { register, handleSubmit, setValue } = useForm();
-  const onSubmit = (data) => {
-    console.log(data);
+  const onSubmit = (article) => {
+    console.log(article);
+    return article
   };
+  useEffect((article) => {
+    debugger;
+    Article.create({article});
+  }, []);
 
   const options = [
     "World News",
@@ -39,9 +48,7 @@ const CreateArticle = () => {
     });
   };
 
-  useEffect(() => {
-    Article.create();
-  }, []);
+  
 
   return (
     <Container>
@@ -59,24 +66,49 @@ const CreateArticle = () => {
         onSubmit={handleSubmit(onSubmit)}
       >
         <Form.Input
-          name="name"
+          name="title"
           data-cy="title-input"
           placeholder="Title"
           onChange={async (e, { name, value }) => {
             setValue(name, value);
           }}
         />
-        <Form.Input data-cy="journalist-input" placeholder="Journalists" />
-        <Form.Input data-cy="lede-input" placeholder="Lede" />
+        <Form.Input
+          data-cy="journalist-input"
+          placeholder="Journalists"
+          name="journalist"
+          onChange={async (e, { name, value }) => {
+            setValue(name, value);
+          }}
+        />
+        <Form.Input
+          data-cy="lede-input"
+          placeholder="Lede"
+          name="lede"
+          onChange={async (e, { name, value }) => {
+            setValue(name, value);
+          }}
+        />
         <Form.Group>
           <Form.Select
             data-cy="category-input"
             placeholder="Category"
             options={categoryOptions}
+            name="category"
             value={categoryOptions.value}
+            onChange={async (e, { name, value }) => {
+              setValue(name, value);
+            }}
           />
         </Form.Group>
-        <Form.TextArea data-cy="body-input" placeholder="Body" />
+        <Form.TextArea
+          data-cy="body-input"
+          placeholder="Body"
+          name="body"
+          onChange={async (e, { name, value }) => {
+            setValue(name, value);
+          }}
+        />
         <Button data-cy="submit-button" type="submit">
           Submit
         </Button>
