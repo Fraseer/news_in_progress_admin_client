@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useRef } from "react";
 import { Header, Container, Form, Button } from "semantic-ui-react";
 import "react-semantic-ui-datepickers/dist/react-semantic-ui-datepickers.css";
 import _ from "lodash";
@@ -16,13 +16,8 @@ const CreateArticle = () => {
 
   const { register, handleSubmit, setValue } = useForm();
   const onSubmit = (article) => {
-    console.log(article);
-    return article
+    Article.create({ article });
   };
-  useEffect((article) => {
-    debugger;
-    Article.create({article});
-  }, []);
 
   const options = [
     "World News",
@@ -47,8 +42,6 @@ const CreateArticle = () => {
       });
     });
   };
-
-  
 
   return (
     <Container>
