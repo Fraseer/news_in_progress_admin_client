@@ -20,7 +20,8 @@ const CreateArticle = () => {
   const onSubmit = (article) => {
     Article.create({ article }).then((response) => {
       if (
-        response.data.message === "Your article has been successfully created"
+        response.data.message ===
+        `You have successfully added ${article.title} to the site`
       ) {
         setOpen(true);
       }
@@ -100,7 +101,7 @@ const CreateArticle = () => {
       >
         <Modal.Content>
           <h1 data-cy="article-creation">
-            Your article has been successfully created
+            You have successfully added the article to the site
           </h1>
         </Modal.Content>
       </Modal>

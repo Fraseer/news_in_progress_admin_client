@@ -1,7 +1,8 @@
 describe("User can create an article", () => {
   beforeEach(() => {
     cy.intercept("POST", "**/api/articles**", {
-      message: "Your article has been successfully created",
+      message:
+        "You have successfully added My Title to the site",
     });
 
     cy.visit("/");
@@ -26,7 +27,7 @@ describe("User can create an article", () => {
     cy.get("[data-cy=submit-button]").click();
     cy.get("[data-cy=article-creation]").should(
       "contain",
-      "Your article has been successfully created"
+      "You have successfully added the article to the site"
     );
   });
 });
