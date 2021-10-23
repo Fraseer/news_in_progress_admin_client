@@ -8,7 +8,11 @@ describe("A list of articles displayed on the review page", () => {
     cy.visit("/");
     cy.get("[data-cy=review-articles]").click();
   });
-  
+
+  it("is expected to display the header and five different articles in the table", () => {
+    cy.get("[data-cy=review-table]").children().should("have.length", 6);
+  });
+
   it("is expected to display a table with the following headers", () => {
     cy.get("[data-cy=review-table]").within(() => {
       cy.get("[data-cy=table-headers]").within(() => {
