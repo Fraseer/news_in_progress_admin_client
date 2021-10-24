@@ -9,8 +9,8 @@ describe("A list of articles displayed on the review page", () => {
     cy.get("[data-cy=review-articles]").click();
   });
 
-  it("is expected to display the header and five different articles in the table", () => {
-    cy.get("[data-cy=review-table]").children().should("have.length", 6);
+  it("is expected to display five different articles in the table", () => {
+    cy.get("[data-cy=review-table-body]").children().should("have.length", 5);
   });
 
   it("is expected to display a table with the following headers", () => {

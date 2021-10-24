@@ -26,7 +26,7 @@ const ReviewArticles = () => {
             Published Status
           </Table.HeaderCell>
         </Table.Header>
-        <Table.Body>{reviewList}</Table.Body>
+        <Table.Body data-cy="review-table-body">{reviewList}</Table.Body>
       </Table>
     </Container>
   );

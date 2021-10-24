@@ -2,6 +2,9 @@ import React from "react";
 import { Table, Checkbox } from "semantic-ui-react";
 
 const ReviewItem = ({ reviewItem }) => {
+
+  let published = JSON.stringify(reviewItem.published)
+
   return (
     <Table.Row data-cy={`row-${reviewItem.id}`} textAlign="center">
       <Table.Cell 
@@ -17,7 +20,8 @@ const ReviewItem = ({ reviewItem }) => {
         {reviewItem.created_at}
       </Table.Cell>
       <Table.Cell data-cy={`published-${reviewItem.id}`}>
-        <Checkbox slider />
+        <Checkbox toggle  />
+        {published}
       </Table.Cell>
     </Table.Row>
   );
