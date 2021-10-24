@@ -1,22 +1,17 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect } from "react";
+import { useSelector } from "react-redux";
 import { Article } from "../modules/apiHelper";
 import { Container, Table } from "semantic-ui-react";
 import ReviewItem from "./ReviewItem";
 
 const ReviewArticles = () => {
-  const [articles, setArticles] = useState([]);
+  const { articles } = useSelector((state) => state);
 
   useEffect(() => {
-    (async () => {
-      await Article.index().then(() => {
-        // setArticles(response);
-        // debugger;
-      });
-    })(setArticles);
+    Article.index();
   }, []);
 
   let reviewList = articles.map((reviewItem) => {
-    debugger;
     return <ReviewItem reviewItem={reviewItem} key={reviewItem.id} />;
   });
   return (

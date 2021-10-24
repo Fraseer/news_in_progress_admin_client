@@ -1,4 +1,5 @@
 import axios from "axios";
+import store from "../state/store/configureStore";
 
 const Article = {
   async create(article) {
@@ -10,7 +11,10 @@ const Article = {
 
   async index() {
     let response = await axios.get("/api/articles");
-    return response;
+    store.dispatch({
+      type: "SET_ARTICLES_INDEX",
+      payload: response.data.articles
+    })
   },
 };
 
