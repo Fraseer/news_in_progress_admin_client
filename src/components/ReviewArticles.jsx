@@ -16,7 +16,7 @@ const ReviewArticles = () => {
   });
   return (
     <Container>
-      <Table data-cy="review-table" compact celled>
+      <Table data-cy="review-table" compact celled color="black" >
         <Table.Header data-cy="table-headers">
           <Table.HeaderCell data-cy="id">Article ID</Table.HeaderCell>
           <Table.HeaderCell data-cy="title">Title</Table.HeaderCell>

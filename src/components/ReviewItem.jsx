@@ -20,8 +20,7 @@ const ReviewItem = ({ reviewItem }) => {
         {reviewItem.created_at}
       </Table.Cell>
       <Table.Cell data-cy={`published-${reviewItem.id}`}>
-        <Checkbox toggle  />
-        {published}
+        <Checkbox toggle  defaultChecked={reviewItem.published} />
       </Table.Cell>
     </Table.Row>
   );
