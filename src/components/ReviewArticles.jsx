@@ -1,25 +1,24 @@
 import React, { useState, useEffect } from "react";
+import { Article } from "../modules/apiHelper";
 import { Container, Table } from "semantic-ui-react";
 import ReviewItem from "./ReviewItem";
-import { Article } from "../modules/apiHelper";
 
 const ReviewArticles = () => {
-  const [articles, setArticles] = useState();
+  const [articles, setArticles] = useState([]);
 
   useEffect(() => {
     (async () => {
-      let articles = await Article.index().then((articles) => {
+      await Article.index().then(() => {
         // setArticles(response);
-        debugger;
-        let reviewList = articles.map((reviewItem) => {
-          debugger;
-          return <ReviewItem reviewItem={reviewItem} key={reviewItem.id} />;
-        });
+        // debugger;
       });
-    })();
+    })(setArticles);
   }, []);
 
-
+  let reviewList = articles.map((reviewItem) => {
+    debugger;
+    return <ReviewItem reviewItem={reviewItem} key={reviewItem.id} />;
+  });
   return (
     <Container>
       <Table data-cy="review-table" compact celled>

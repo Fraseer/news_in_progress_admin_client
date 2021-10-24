@@ -1,7 +1,7 @@
 import React from "react";
 import { Table, Checkbox } from "semantic-ui-react";
 
-const ReviewItem = (reviewItem) => {
+const ReviewItem = ({reviewItem}) => {
   return (
     <Table.Row data-cy={`row-${reviewItem.id}`}>
       <Table.Cell data-cy={`id-${reviewItem.id}`}>{`${reviewItem.id}`}</Table.Cell>
