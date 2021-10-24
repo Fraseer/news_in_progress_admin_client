@@ -1,6 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { Menu, MenuItem } from "semantic-ui-react";
+import { Image, Menu, MenuItem } from "semantic-ui-react";
+import logo from "../img/logo.png";
 
 const Header = () => {
   return (
@@ -13,7 +14,8 @@ const Header = () => {
       widths="1"
     >
       <MenuItem className="site-name" data-cy="header">
-        News In Progress - Admin Site
+        <Image src={logo} size="small" />
+        - Admin Site
       </MenuItem>
     </Menu>
   );
