@@ -1,17 +1,16 @@
 import React from "react";
 import { Table, Checkbox } from "semantic-ui-react";
 
-
-const ReviewItem = () => {
+const ReviewItem = (reviewItem) => {
   return (
-    <Table.Row data-cy="row-1">
-      <Table.Cell data-cy="id-1">1</Table.Cell>
-      <Table.Cell data-cy="title-1">
-        Servicing and repairing electric cars requires new skills
+    <Table.Row data-cy={`row-${reviewItem.id}`}>
+      <Table.Cell data-cy={`id-${reviewItem.id}`}>{`${reviewItem.id}`}</Table.Cell>
+      <Table.Cell data-cy={`title-${reviewItem.id}`}>
+      {reviewItem.title}
       </Table.Cell>
-      <Table.Cell data-cy="journalist-1">Bob Journalist</Table.Cell>
-      <Table.Cell data-cy="created-at-1">2021-10-05</Table.Cell>
-      <Table.Cell data-cy="published-1">
+      <Table.Cell data-cy={`journalist-${reviewItem.id}`}>{reviewItem.journalist}</Table.Cell>
+      <Table.Cell data-cy={`date-${reviewItem.id}`}>{reviewItem.date}</Table.Cell>
+      <Table.Cell data-cy={`published-${reviewItem.id}`}>
         <Checkbox slider />
       </Table.Cell>
     </Table.Row>

@@ -1,6 +1,6 @@
 describe("A list of articles displayed on the review page", () => {
   beforeEach(() => {
-    cy.intercept("GET", "**api/articles/**", {
+    cy.intercept("GET", "**api/articles", {
       fixture: "indexResponseFromAPI.json",
       statusCode: 200,
     });

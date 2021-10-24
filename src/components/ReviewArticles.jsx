@@ -1,10 +1,23 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { Container, Table } from "semantic-ui-react";
 import ReviewItem from "./ReviewItem";
+import { Article } from "../modules/apiHelper";
 
 const ReviewArticles = () => {
+  const [articles, setArticles] = useState();
 
-  //create axios get request
+  useEffect(() => {
+    (async () => {
+      let articles = await Article.index().then((articles) => {
+        // setArticles(response);
+        debugger;
+        let reviewList = articles.map((reviewItem) => {
+          debugger;
+          return <ReviewItem reviewItem={reviewItem} key={reviewItem.id} />;
+        });
+      });
+    })();
+  }, []);
 
 
   return (
@@ -19,9 +32,7 @@ const ReviewArticles = () => {
             Published Status
           </Table.HeaderCell>
         </Table.Header>
-        <Table.Body>
-          <ReviewItem />
-        </Table.Body>
+        <Table.Body>{reviewList}</Table.Body>
       </Table>
     </Container>
   );
