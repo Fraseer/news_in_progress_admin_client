@@ -3,8 +3,6 @@ import { Table, Checkbox } from "semantic-ui-react";
 
 const ReviewItem = ({ reviewItem }) => {
 
-  let published = JSON.stringify(reviewItem.published)
-
   return (
     <Table.Row data-cy={`row-${reviewItem.id}`} textAlign="center">
       <Table.Cell 
