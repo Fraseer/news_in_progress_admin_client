@@ -16,6 +16,22 @@ const Article = {
       payload: response.data.articles,
     });
   },
+
+  async show(articleId) {
+    let response = await axios.get(`/api/articles/${articleId}`);
+    store.dispatch({
+      type: "SET_ARTICLES_SHOW",
+      payload: response.data.article,
+    });
+  },
+
+  async put(articleId) {
+    let response = await axios.get(`/api/articles/${articleId}`);
+    store.dispatch({
+      type: "SET_ARTICLES_PUT",
+      payload: response.data.article,  //this might have to change
+    });
+  },
 };
 
 export { Article };

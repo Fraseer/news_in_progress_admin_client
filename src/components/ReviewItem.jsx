@@ -10,7 +10,6 @@ const ReviewItem = ({ reviewItem }) => {
       to={{ pathname: `/edit-article/${reviewItem.id}` }}
       data-cy={`row-${reviewItem.id}`}
       textAlign="center"
-      onClick={(() => EditPage(reviewItem))}
     >
       <Table.Cell
         data-cy={`id-${reviewItem.id}`}

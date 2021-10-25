@@ -3,19 +3,17 @@ import { Container, Form, Button, Modal } from "semantic-ui-react";
 
 
 
-const EditPage = ({ reviewItem }) => {
+const EditPage = () => {
+  
   return (
     <Container>
 
-      <div>{reviewItem?.title}</div>
       <Form size="huge" data-cy="edit-article">
         <Form.Input
-          control={reviewItem?.title}
           name="title"
           data-cy="title-input"
           placeholder="Title"
         >
-          {reviewItem?.title}
         </Form.Input>
         <Form.Input
           data-cy="journalist-input"
