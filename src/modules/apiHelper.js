@@ -13,8 +13,8 @@ const Article = {
     let response = await axios.get("/api/articles");
     store.dispatch({
       type: "SET_ARTICLES_INDEX",
-      payload: response.data.articles
-    })
+      payload: response.data.articles,
+    });
   },
 };
 
