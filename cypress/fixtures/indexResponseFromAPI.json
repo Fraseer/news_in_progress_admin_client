@@ -1,0 +1,60 @@
+{
+  "articles": [
+    {
+      "id": 1,
+      "title": "Servicing and repairing electric cars requires new skills",
+      "lede": "Many workshops will be out of a job",
+      "journalists": ["Bob Journalist"],
+      "created_at": "2021-10-05",
+      "updated_at": "2021-10-05",
+      "category_name": "Science & Enviroment",
+      "top_story": true,
+      "published": true
+      
+    },
+    {
+      "id": 2,
+      "title": "Human diets are becoming less diverse, a new book warns",
+      "lede": "Dan Saladino tells delicious tales of rare foods and the people trying to save them",
+      "journalists": ["Peter journalist and Pette Journalist"],
+      "created_at": "2021-10-05",
+      "updated_at": "2021-10-05",
+      "category_name": "Culture & Health",
+      "top_story": false,
+      "published": true
+    },
+    {
+      "id": 3,
+      "title": "Hydrogen cars and boilers spark hopes of a green revolution",
+      "lede": "Hydrogen is being touted as a ‘net-zero fuel’ that can help Britain slash its emissions. Jon Yeomans asks if the gas can really take off",
+      "journalists": ["Jon Yeomans"],
+      "created_at": "2021-10-06",
+      "updated_at": "2021-10-06",
+      "category_name": "Culture & Health",
+      "top_story": false,
+      "published": true
+    },
+    {
+      "id": 4,
+      "title": "World Goes Broke Again",
+      "lede": "All gone",
+      "journalists": ["Peter Journalist and Pette Journalist"],
+      "created_at": "2021-10-05",
+      "updated_at": "2021-10-05",
+      "category_name": "Business",
+      "top_story": false,
+      "published": true
+    },
+    {
+      "id": 5,
+      "title": "Miraculous Recovery",
+      "lede": "Its back",
+      "journalists": ["Harry Journalist"],
+      "created_at": "2021-10-05",
+      "updated_at": "2021-10-05",
+      "category_name": "Business",
+      "top_story": false,
+      "published": false
+    }
+  ]
+}
