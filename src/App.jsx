@@ -4,7 +4,7 @@ import Header from "./components/Header";
 import HomePage from "./components/HomePage";
 import CreateArticle from "./components/CreateArticle";
 import ReviewArticles from "./components/ReviewArticles";
-import EditPage from "./components/EditPage";
+import EditArticle from "./components/EditArticle";
 
 const App = () => {
   return (
@@ -14,7 +14,7 @@ const App = () => {
         <Route exact path="/" component={HomePage}></Route>
         <Route exact path="/create-article" component={CreateArticle}></Route>
         <Route exact path="/review-articles" component={ReviewArticles}></Route>
-        <Route exact path="/edit-article/:id" component={EditPage}></Route>
+        <Route exact path="/edit-article/:id" component={EditArticle}></Route>
       </Switch>
     </BrowserRouter>
   );

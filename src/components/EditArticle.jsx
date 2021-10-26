@@ -1,20 +1,27 @@
-import React from "react";
+import React, { useEffect } from "react";
+import { useParams } from "react-router";
+import { useSelector } from "react-redux";
+import { Article } from "../modules/apiHelper";
 import { Container, Form, Button, Modal } from "semantic-ui-react";
 
+const EditArticle = () => {
+  const { article } = useSelector((state) => state);
+  const { id } = useParams();
 
+  useEffect(() => {
+    Article.show(id);
+  }, [id]);
 
-const EditPage = () => {
-  
   return (
     <Container>
-
-      <Form size="huge" data-cy="edit-article">
+      <input type="text" value={article?.title} />
+      {/* <textarea>{article.body}</textarea> */}
+      {/* <Form size="huge" data-cy="edit-article">
         <Form.Input
           name="title"
           data-cy="title-input"
           placeholder="Title"
-        >
-        </Form.Input>
+        ></Form.Input>
         <Form.Input
           data-cy="journalist-input"
           placeholder="Journalists"
@@ -30,7 +37,7 @@ const EditPage = () => {
         <Button data-cy="submit-button" type="submit">
           Submit
         </Button>
-      </Form>
+      </Form> */}
       {/* <Modal
         basic
         closeIcon
@@ -49,4 +56,4 @@ const EditPage = () => {
   );
 };
 
-export default EditPage;
+export default EditArticle;
