@@ -20,16 +20,16 @@ const Article = {
   async show(articleId) {
     let response = await axios.get(`/api/articles/${articleId}`);
     store.dispatch({
-      type: "SET_ARTICLES_SHOW",
+      type: "SHOW_ARTICLE",
       payload: response.data.article,
     });
   },
 
-  async put(articleId) {
-    let response = await axios.get(`/api/articles/${articleId}`);
+  async update(articleId) {
+    let response = await axios.put(`/api/articles/${articleId}`);
     store.dispatch({
-      type: "SET_ARTICLES_PUT",
-      payload: response.data.article,  //this might have to change
+      type: "UPDATE_ARTICLES",
+      payload: response.data.article, //this might have to change
     });
   },
 };

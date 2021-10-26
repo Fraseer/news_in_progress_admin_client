@@ -1,9 +1,13 @@
 describe("Editor can edit a specific article ", () => {
   beforeEach(() => {
-    cy.intercept("GET", "**api/articles**", {
+    cy.intercept("GET", "**api/articles", {
       fixture: "indexResponseFromAPI.json",
       statusCode: 200,
     });
+    cy.intercept("GET", "**api/articles/5**", {
+      fixture: "articleExample.json",
+      statusCode: 200,
+    })
     // cy.intercept("PUT", "**api/articles**", {
     //   fixture: "indexResponseFromAPI.json",
     //   statusCode: 200,
