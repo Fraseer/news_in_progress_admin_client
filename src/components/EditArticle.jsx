@@ -1,16 +1,17 @@
 import React, { useEffect } from "react";
 import { useParams } from "react-router";
 import { useForm } from "react-hook-form";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { Article } from "../modules/apiHelper";
 import { Container, Form, Button } from "semantic-ui-react";
 
 const EditArticle = () => {
   const { article } = useSelector((state) => state);
   const { id } = useParams();
+  const dispatch = useDispatch();
 
   useEffect(() => {
-     Article.show(id);
+    Article.show(id);
   }, [id]);
 
   useEffect(() => {
@@ -23,13 +24,12 @@ const EditArticle = () => {
   }, []);
 
   const { register, handleSubmit, setValue } = useForm();
+
   const onSubmit = (article) => {
-    Article.update({ article }).then((response) => {
-      if (
-        response.data.message ===
-        `You have successfully edited ${article.title}`
-      ) {
-      }
+    debugger;
+    dispatch({
+      type: "SHOW_ARTICLE",
+      payload: article,
     });
   };
 
@@ -48,12 +48,12 @@ const EditArticle = () => {
           onChange={(e, { name, value }) => {
             setValue(name, value);
           }}
-        ></Form.Input>
+        />
         <Form.Input
           data-cy="edit-journalist"
           placeholder="Journalists"
           name="journalist"
-          value={article?.authors}
+          defaultValue={article?.authors}
           onChange={(e, { name, value }) => {
             setValue(name, value);
           }}
@@ -67,7 +67,7 @@ const EditArticle = () => {
             setValue(name, value);
           }}
         />
-          {/* <Form.Select
+        {/* <Form.Select
           data-cy="category-input"
           placeholder="Category"
           options={categoryOptions}
