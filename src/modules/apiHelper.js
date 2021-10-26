@@ -25,9 +25,11 @@ const Article = {
     });
   },
 
-  async update(articleId) {
-    let response = await axios.put(`/api/articles/${articleId}`);
-    return response
+  async update(article) {
+    const params = article;
+    debugger
+    let response = await axios.put(`/api/articles/${article.id}`, params);
+    return response;
   },
 };
 

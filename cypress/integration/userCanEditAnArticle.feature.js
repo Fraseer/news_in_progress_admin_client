@@ -48,7 +48,7 @@ describe("Editor can edit a specific article ", () => {
       .should("contain.value", "herd near Escobar's former ranch.");
   });
 
-  it('is expected to display a message upon submission', () => {
+  it.only('is expected to display a message upon submission', () => {
     cy.get("[data-cy=edit-body]").type("adding text to body");
     cy.get("[data-cy=submit-btn]").click()
     cy.get("[data-cy=response-message]").should('contain.text', "You have successfully editted the article")

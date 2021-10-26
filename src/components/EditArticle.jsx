@@ -23,14 +23,14 @@ const EditArticle = () => {
     // eslint-disable-next-line
   }, []);
 
-  const { register, handleSubmit, setValue } = useForm();
+  const { register, handleSubmit, setValue } = useForm({defaultValues: {}});
 
   const onSubmit = (article) => {
+    debugger
     dispatch({
       type: "SHOW_ARTICLE",
       payload: article,
-    });
-    debugger;
+    }).then(Article.update(article));
   };
 
   return (
