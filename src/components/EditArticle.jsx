@@ -26,11 +26,11 @@ const EditArticle = () => {
   const { register, handleSubmit, setValue } = useForm();
 
   const onSubmit = (article) => {
-    debugger;
     dispatch({
       type: "SHOW_ARTICLE",
       payload: article,
     });
+    debugger;
   };
 
   return (
@@ -86,7 +86,7 @@ const EditArticle = () => {
             setValue(name, value);
           }}
         />
-        <Button data-cy="submit-button" type="submit">
+        <Button data-cy="submit-btn" type="submit">
           Submit
         </Button>
       </Form>

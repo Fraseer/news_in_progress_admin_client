@@ -37,25 +37,26 @@ describe("Editor can edit a specific article ", () => {
     );
   });
 
-  it.only("is expected to allow editor to edit the title, lede and body", () => {
+  it("is expected to allow editor to edit the title and lede", () => {
     cy.get("[data-cy=edit-title]").type(" lord's hippos");
     cy.get("[data-cy=edit-lede]").type("herd near Escobar's former ranch.");
+    cy.get("[data-cy=edit-title]")
+      .children()
+      .should("contain.value", " lord's hippos");
+    cy.get("[data-cy=edit-lede]")
+      .children()
+      .should("contain.value", "herd near Escobar's former ranch.");
+  });
+
+  it('is expected to display a message upon submission', () => {
     cy.get("[data-cy=edit-body]").type("adding text to body");
-    cy.get("[data-cy=edit-title]").children().should("contain.value", " lord's hippos");  
-    cy.get("[data-cy=edit-lede]").children().should("contain.value", "herd near Escobar's former ranch."); 
-    cy.get("[data-cy=edit-body]").should("contain.text", "adding text to body");   
+    cy.get("[data-cy=submit-btn]").click()
+    cy.get("[data-cy=response-message]").should('contain.text', "You have successfully editted the article")
   });
 });
 
-
-    // cy.get("[data-cy=category-input]")
-    //   .click()
-    //   .within(() => {
-    //     cy.contains("Business").click();
-    //   });
-
-        // cy.get("[data-cy=submit-button]").click();
-    // cy.get("[data-cy=edit-article]").should(
-    //   "contain",
-    //   "You have successfully editted the article"
-    // );
+// cy.get("[data-cy=category-input]")
+//   .click()
+//   .within(() => {
+//     cy.contains("Business").click();
+//   });
