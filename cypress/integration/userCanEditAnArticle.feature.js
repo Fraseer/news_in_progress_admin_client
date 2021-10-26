@@ -21,7 +21,7 @@ describe("Editor can edit a specific article ", () => {
     cy.get("[data-cy=edit-article").children().should("have.length", 5);
   });
 
-  it.only("is expected to display the article to be edited", () => {
+  it("is expected to display the article to be edited", () => {
     cy.get("[data-cy=edit-title]")
       .children()
       .should("have.value", "Pablo Escobar: Colombia sterilises drug");

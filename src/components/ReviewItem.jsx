@@ -7,15 +7,14 @@ const ReviewItem = ({ reviewItem }) => {
     <Table.Row data-cy={`row-${reviewItem.id}`} textAlign="center">
       <Table.Cell
         data-cy={`id-${reviewItem.id}`}
-        >{`${reviewItem.id}`}</Table.Cell>
-      <Table.Cell
-        // eslint-disable-next-line
-        as={Link}
-        to={{ pathname: `/edit-article/${reviewItem.id}` }}
-        data-cy={`title-${reviewItem.id}`}
-        textAlign="left"
-      >
-        {reviewItem.title}
+      >{`${reviewItem.id}`}</Table.Cell>
+      <Table.Cell textAlign="left">
+        <Link
+          data-cy={`title-${reviewItem.id}`}
+          to={{ pathname: `/edit-article/${reviewItem.id}` }}
+        >
+          {reviewItem.title}
+        </Link>
       </Table.Cell>
       <Table.Cell data-cy={`journalist-${reviewItem.id}`} textAlign="left">
         {reviewItem.journalists}
