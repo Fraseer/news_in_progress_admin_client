@@ -21,10 +21,24 @@ describe("Editor can edit a specific article ", () => {
     cy.get("[data-cy=edit-article").children().should("have.length", 5);
   });
 
-  it("is expected to contain the following editable data", () => {
-    cy.get("[data-cy=edit-title]").type(
-      " lord's hippos"
+  it.only("is expected to display the article to be edited", () => {
+    cy.get("[data-cy=edit-title]")
+      .children()
+      .should("have.value", "Pablo Escobar: Colombia sterilises drug");
+    cy.get("[data-cy=edit-lede]")
+      .children()
+      .should(
+        "have.value",
+        "Scientists are concered about the impact of the rogue non-native "
+      );
+    cy.get("[data-cy=edit-body]").should(
+      "contain.text",
+      "A group of hippos - an unwanted legacy following the death of notorious Colombian drug lord Pablo"
     );
+  });
+
+  it("is expected to contain the following editable data", () => {
+    cy.get("[data-cy=edit-title]").type(" lord's hippos");
     cy.get("[data-cy=edit-lede]").type("herd near Escobar's former ranch.");
     // cy.get("[data-cy=category-input]")
     //   .click()
