@@ -2,19 +2,19 @@ import React from "react";
 import { Table, Checkbox } from "semantic-ui-react";
 import { Link } from "react-router-dom";
 
-
 const ReviewItem = ({ reviewItem }) => {
   return (
-    <Table.Row
-      as={Link}
-      to={{ pathname: `/edit-article/${reviewItem.id}` }}
-      data-cy={`row-${reviewItem.id}`}
-      textAlign="center"
-    >
+    <Table.Row data-cy={`row-${reviewItem.id}`} textAlign="center">
       <Table.Cell
         data-cy={`id-${reviewItem.id}`}
-      >{`${reviewItem.id}`}</Table.Cell>
-      <Table.Cell data-cy={`title-${reviewItem.id}`} textAlign="left">
+        >{`${reviewItem.id}`}</Table.Cell>
+      <Table.Cell
+        // eslint-disable-next-line
+        as={Link}
+        to={{ pathname: `/edit-article/${reviewItem.id}` }}
+        data-cy={`title-${reviewItem.id}`}
+        textAlign="left"
+      >
         {reviewItem.title}
       </Table.Cell>
       <Table.Cell data-cy={`journalist-${reviewItem.id}`} textAlign="left">

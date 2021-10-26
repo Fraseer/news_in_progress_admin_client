@@ -9,21 +9,29 @@ const EditArticle = () => {
   const { article } = useSelector((state) => state);
   const { id } = useParams();
 
-  const { handleSubmit, setValue } = useForm();
+  useEffect(() => {
+     Article.show(id);
+  }, [id]);
+
+  useEffect(() => {
+    register("title");
+    register("journalist");
+    register("lede");
+    register("category");
+    register("body");
+    // eslint-disable-next-line
+  }, []);
+
+  const { register, handleSubmit, setValue } = useForm();
   const onSubmit = (article) => {
-    Article.create({ article }).then((response) => {
+    Article.update({ article }).then((response) => {
       if (
         response.data.message ===
-        `You have successfully added ${article.title} to the site`
+        `You have successfully edited ${article.title}`
       ) {
       }
     });
   };
-
-  useEffect(() => {
-    Article.show(id);
-    // debugger
-  }, [id]);
 
   return (
     <Container>
@@ -34,7 +42,7 @@ const EditArticle = () => {
       >
         <Form.Input
           name="title"
-          data-cy="title-input"
+          data-cy="edit-title"
           placeholder="Title"
           defaultValue={article?.title}
           onChange={(e, { name, value }) => {
@@ -42,7 +50,7 @@ const EditArticle = () => {
           }}
         ></Form.Input>
         <Form.Input
-          data-cy="journalist-input"
+          data-cy="edit-journalist"
           placeholder="Journalists"
           name="journalist"
           value={article?.authors}
@@ -51,7 +59,7 @@ const EditArticle = () => {
           }}
         />
         <Form.Input
-          data-cy="lede-input"
+          data-cy="edit-lede"
           placeholder="Lede"
           name="lede"
           defaultValue={article?.lede}
@@ -59,17 +67,18 @@ const EditArticle = () => {
             setValue(name, value);
           }}
         />
-        <Form.Input
+          {/* <Form.Select
           data-cy="category-input"
           placeholder="Category"
+          options={categoryOptions}
           name="category"
-          value={article?.category}
+          value={categoryOptions.value}
           onChange={(e, { name, value }) => {
             setValue(name, value);
           }}
-        />
+        /> */}
         <Form.TextArea
-          data-cy="body-input"
+          data-cy="edit-body"
           placeholder="Body"
           name="body"
           defaultValue={article?.body}

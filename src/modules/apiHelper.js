@@ -27,10 +27,7 @@ const Article = {
 
   async update(articleId) {
     let response = await axios.put(`/api/articles/${articleId}`);
-    store.dispatch({
-      type: "UPDATE_ARTICLES",
-      payload: response.data.article, //this might have to change
-    });
+    return response
   },
 };
 
