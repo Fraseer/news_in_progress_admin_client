@@ -1,12 +1,12 @@
 import React, { useEffect } from "react";
 import { useParams } from "react-router";
-import { useForm } from "react-hook-form";
+// import { useForm } from "react-hook-form";
 import { useDispatch, useSelector } from "react-redux";
 import { Article } from "../modules/apiHelper";
 import { Container, Form, Button } from "semantic-ui-react";
 
 const EditArticle = () => {
-  const { article } = useSelector((state) => state);
+  const { article, categories } = useSelector((state) => state);
   const { id } = useParams();
   const dispatch = useDispatch();
 
@@ -14,77 +14,71 @@ const EditArticle = () => {
     Article.show(id);
   }, [id]);
 
-  useEffect(() => {
-    register("title");
-    register("journalist");
-    register("lede");
-    register("category");
-    register("body");
-    // eslint-disable-next-line
-  }, []);
+  // useEffect(() => {
+  //   register("title");
+  //   register("journalist");
+  //   register("lede");
+  //   register("category");
+  //   register("body");
+  //   // eslint-disable-next-line
+  // }, []);
 
-  const { register, handleSubmit, setValue } = useForm({defaultValues: {}});
+  // const { register, handleSubmit, setValue } = useForm({defaultValues: {
+  //   title: article?.title
+  // }});
 
-  const onSubmit = (article) => {
-    debugger
-    dispatch({
-      type: "SHOW_ARTICLE",
-      payload: article,
-    }).then(Article.update(article));
+  const formattedCategories = categories.map((category, index) => {
+    return { key: index, value: category, text: category };
+  });
+
+  const handleSubmit = async (event) => {
+    event.preventDefault();
+    debugger;
+    const form = event.target;
+    const title = form.title.value;
+    const lede = form.lede.value;
+    const category = form.category.value;
+    const body = form.body.value;
+    // dispatch({
+    //   type: "SHOW_ARTICLE",
+    //   payload: article,
+    // });
+    // Article.update(article);
   };
 
   return (
     <Container>
-      <Form
-        size="huge"
-        data-cy="edit-article"
-        onSubmit={handleSubmit(onSubmit)}
-      >
+      <Form size="huge" data-cy="edit-article" onSubmit={handleSubmit}>
         <Form.Input
           name="title"
           data-cy="edit-title"
           placeholder="Title"
           defaultValue={article?.title}
-          onChange={(e, { name, value }) => {
-            setValue(name, value);
-          }}
         />
         <Form.Input
           data-cy="edit-journalist"
           placeholder="Journalists"
           name="journalist"
           defaultValue={article?.authors}
-          onChange={(e, { name, value }) => {
-            setValue(name, value);
-          }}
         />
         <Form.Input
           data-cy="edit-lede"
           placeholder="Lede"
           name="lede"
           defaultValue={article?.lede}
-          onChange={(e, { name, value }) => {
-            setValue(name, value);
-          }}
         />
-        {/* <Form.Select
+        <Form.Select
           data-cy="category-input"
           placeholder="Category"
-          options={categoryOptions}
+          options={formattedCategories}
           name="category"
-          value={categoryOptions.value}
-          onChange={(e, { name, value }) => {
-            setValue(name, value);
-          }}
-        /> */}
+          defaultValue={article?.category}
+        />
         <Form.TextArea
           data-cy="edit-body"
           placeholder="Body"
           name="body"
           defaultValue={article?.body}
-          onChange={(e, { name, value }) => {
-            setValue(name, value);
-          }}
         />
         <Button data-cy="submit-btn" type="submit">
           Submit

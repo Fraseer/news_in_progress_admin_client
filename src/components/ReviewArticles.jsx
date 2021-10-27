@@ -1,15 +1,29 @@
 import React, { useEffect } from "react";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { Article } from "../modules/apiHelper";
 import { Table, Container } from "semantic-ui-react";
 import ReviewItem from "./ReviewItem";
+import _ from "lodash";
 
 const ReviewArticles = () => {
   const { articles } = useSelector((state) => state);
+  const dispatch = useDispatch();
+
+  const uniqueCategories = () => {
+    let categories = articles.map((article) => {
+      return article.category_name;
+    });
+    dispatch({ type: "SET_CATEGORIES", payload: _.uniq(categories) });
+  };
 
   useEffect(() => {
     Article.index();
   }, []);
+
+  useEffect(() => {
+    uniqueCategories();
+    // eslint-disable-next-line
+  }, [articles]);
 
   let reviewList = articles.map((reviewItem) => {
     return <ReviewItem reviewItem={reviewItem} key={reviewItem.id} />;
