@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useParams } from "react-router";
 // import { useForm } from "react-hook-form";
 import { useDispatch, useSelector } from "react-redux";
@@ -6,6 +6,7 @@ import { Article } from "../modules/apiHelper";
 import { Container, Form, Button } from "semantic-ui-react";
 
 const EditArticle = () => {
+  const [selectedCategory, setSelectedCategory] = useState();
   const { article, categories } = useSelector((state) => state);
   const { id } = useParams();
   const dispatch = useDispatch();
@@ -36,9 +37,10 @@ const EditArticle = () => {
     const form = event.target;
     const title = form.title.value;
     const lede = form.lede.value;
-    debugger
-    const category = form.category.value;
+    const category = selectedCategory;
     const body = form.body.value;
+    
+    debugger;
     // dispatch({
     //   type: "SHOW_ARTICLE",
     //   payload: article,
@@ -73,6 +75,9 @@ const EditArticle = () => {
           options={formattedCategories}
           name="category"
           defaultValue={article?.category_name}
+          onChange={(event, data) => {
+            setSelectedCategory(data.value);
+          }}
         />
         <Form.TextArea
           data-cy="edit-body"

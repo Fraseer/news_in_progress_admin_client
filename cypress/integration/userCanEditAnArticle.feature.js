@@ -1,3 +1,4 @@
+/* eslint-disable no-undef */
 describe("Editor can edit a specific article ", () => {
   beforeEach(() => {
     cy.intercept("GET", "**api/articles", {
@@ -37,21 +38,31 @@ describe("Editor can edit a specific article ", () => {
     );
   });
 
-  it("is expected to allow editor to edit the title and lede", () => {
+  it.only("is expected to allow editor to edit the title and lede", () => {
+    cy.get("[data-cy=category-input]").as("selectCategory");
     cy.get("[data-cy=edit-title]").type(" lord's hippos");
     cy.get("[data-cy=edit-lede]").type("herd near Escobar's former ranch.");
-    cy.get("[data-cy=edit-title]")
-      .children()
-      .should("contain.value", " lord's hippos");
-    cy.get("[data-cy=edit-lede]")
-      .children()
-      .should("contain.value", "herd near Escobar's former ranch.");
+    cy.get("@selectCategory").click();
+    cy.get("@selectCategory").within(() => {
+      cy.get('span').contains('Business').click()
+    });
+    cy.get("[data-cy=submit-btn]").click();
+
+    // cy.get("[data-cy=edit-title]")
+    //   .children()
+    //   .should("contain.value", " lord's hippos");
+    // cy.get("[data-cy=edit-lede]")
+    //   .children()
+    //   .should("contain.value", "herd near Escobar's former ranch.");
   });
 
-  it.only('is expected to display a message upon submission', () => {
+  it("is expected to display a message upon submission", () => {
     cy.get("[data-cy=edit-body]").type("adding text to body");
-    cy.get("[data-cy=submit-btn]").click()
-    cy.get("[data-cy=response-message]").should('contain.text', "You have successfully editted the article")
+    cy.get("[data-cy=submit-btn]").click();
+    cy.get("[data-cy=response-message]").should(
+      "contain.text",
+      "You have successfully editted the article"
+    );
   });
 });
 
