@@ -1,3 +1,4 @@
+/* eslint-disable no-undef */
 describe("A list of articles displayed on the review page", () => {
   beforeEach(() => {
     cy.intercept("GET", "**api/articles", {

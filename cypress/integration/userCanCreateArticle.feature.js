@@ -1,3 +1,4 @@
+/* eslint-disable no-undef */
 describe("User can create an article", () => {
   beforeEach(() => {
     cy.intercept("POST", "**/api/articles**", {

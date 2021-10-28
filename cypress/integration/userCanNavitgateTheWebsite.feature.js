@@ -1,15 +1,17 @@
+/* eslint-disable no-undef */
 describe("User can navigate to the app", () => {
   beforeEach(() => {
+    cy.intercept("GET", "**api/articles", {
+      fixture: "indexResponseFromAPI.json",
+      statusCode: 200,
+    });
     cy.visit("/");
   });
 
   describe("and on the home page", () => {
     it("it is expected to display a header", () => {
       cy.get("[data-cy=header]").should("be.visible");
-      cy.get("[data-cy=header]").should(
-        "contain",
-        "News In Progress - Admin Site"
-      );
+      cy.get("[data-cy=header]").should("contain", "- Admin Site");
     });
 
     it("is expected to display a add article button", () => {

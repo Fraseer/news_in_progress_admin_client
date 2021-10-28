@@ -13,8 +13,22 @@ const Article = {
     let response = await axios.get("/api/articles");
     store.dispatch({
       type: "SET_ARTICLES_INDEX",
-      payload: response.data.articles
-    })
+      payload: response.data.articles,
+    });
+  },
+
+  async show(articleId) {
+    let response = await axios.get(`/api/articles/${articleId}`);
+    store.dispatch({
+      type: "SHOW_ARTICLE",
+      payload: response.data.article,
+    });
+  },
+
+  async update(article) {
+    const params = article;
+    let response = await axios.put(`/api/articles/${article.article.id}`, params);
+    return response.data.message;
   },
 };
 
