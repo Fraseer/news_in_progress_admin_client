@@ -10,7 +10,7 @@ const rootReducer = (state, action) => {
         ...state,
         article: action.payload,
       };
-    case "SET_CATEGORIES":
+    case "SET_CATEGORIES":            
       return {
         ...state,
         categories: action.payload,
