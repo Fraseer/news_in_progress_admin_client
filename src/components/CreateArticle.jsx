@@ -9,7 +9,7 @@ const CreateArticle = () => {
 
   useEffect(() => {
     register("title");
-    register("journalist");
+    register("authors");
     register("lede");
     register("category");
     register("body");
@@ -56,9 +56,9 @@ const CreateArticle = () => {
         <Form.Input
           data-cy="journalist-input"
           placeholder="Journalists"
-          name="journalist"
+          name="authors"
           onChange={(e, { name, value }) => {
-            setValue(name, value);
+            setValue(name, [value]);
           }}
         />
         <Form.Input
