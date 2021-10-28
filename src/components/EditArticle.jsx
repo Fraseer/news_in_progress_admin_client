@@ -27,21 +27,16 @@ const EditArticle = () => {
 
   const handleSubmit = async (event) => {
     event.preventDefault();
+    
     const form = event.target;
-    const title = form.title.value;
-    const authors = [form.title.journalist];
-    const lede = form.lede.value;
-    const category = selectedCategory;
-    const body = form.body.value;
-
     const editedArticle = {
       article: {
         id: id,
-        title: title,
-        authors: authors,
-        lede: lede,
-        category: category,
-        body: body,
+        title: form.title.value,
+        authors: [form.title.journalist],
+        lede:  form.lede.value,
+        category: selectedCategory,
+        body: form.body.value,
       },
     };
     let response = await Article.update(editedArticle);
