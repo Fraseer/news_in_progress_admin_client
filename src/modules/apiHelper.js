@@ -27,9 +27,8 @@ const Article = {
 
   async update(article) {
     const params = article;
-    debugger
-    let response = await axios.put(`/api/articles/${article.id}`, params);
-    return response;
+    let response = await axios.put(`/api/articles/${article.article.id}`, params);
+    return response.data.message;
   },
 };
 

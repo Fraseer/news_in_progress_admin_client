@@ -1,3 +1,4 @@
+/* eslint-disable no-undef */
 describe("User can navigate to the app", () => {
   beforeEach(() => {
     cy.intercept("GET", "**api/articles", {

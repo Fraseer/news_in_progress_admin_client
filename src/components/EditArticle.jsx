@@ -1,34 +1,24 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router";
-// import { useForm } from "react-hook-form";
-import { useDispatch, useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 import { Article } from "../modules/apiHelper";
-import { Container, Form, Button } from "semantic-ui-react";
+import { Container, Form, Button, Modal } from "semantic-ui-react";
 
 const EditArticle = () => {
   const [selectedCategory, setSelectedCategory] = useState();
+  const [open, setOpen] = useState(false);
   const { article, categories } = useSelector((state) => state);
   const { id } = useParams();
-  const dispatch = useDispatch();
 
   useEffect(() => {
     Article.show(id);
   }, [id]);
 
-  // useEffect(() => {
-  //   register("title");
-  //   register("journalist");
-  //   register("lede");
-  //   register("category");
-  //   register("body");
-  //   // eslint-disable-next-line
-  // }, []);
+  useEffect(() => {
+    setSelectedCategory(article.category_name);
+  }, [article]);
 
-  // const { register, handleSubmit, setValue } = useForm({defaultValues: {
-  //   title: article?.title
-  // }});
-
-  const formattedCategories = categories.map((category, index) => {
+  const formattedCategories = categories.map((category) => {
     return { value: category, text: category };
   });
 
@@ -36,16 +26,25 @@ const EditArticle = () => {
     event.preventDefault();
     const form = event.target;
     const title = form.title.value;
+    const authors = [form.title.journalist];
     const lede = form.lede.value;
     const category = selectedCategory;
     const body = form.body.value;
-    
-    debugger;
-    // dispatch({
-    //   type: "SHOW_ARTICLE",
-    //   payload: article,
-    // });
-    // Article.update(article);
+
+    const editedArticle = {
+      article: {
+        id: id,
+        title: title,
+        authors: authors,
+        lede: lede,
+        category: category,
+        body: body,
+      },
+    };
+    let response = await Article.update(editedArticle);
+    if (response === "You have successfully edited the article") {
+      setOpen(true);
+    }
   };
 
   return (
@@ -74,7 +73,7 @@ const EditArticle = () => {
           placeholder="Category"
           options={formattedCategories}
           name="category"
-          defaultValue={article?.category_name}
+          value={selectedCategory}
           onChange={(event, data) => {
             setSelectedCategory(data.value);
           }}
@@ -89,7 +88,7 @@ const EditArticle = () => {
           Submit
         </Button>
       </Form>
-      {/* <Modal
+      <Modal
         basic
         closeIcon
         onClose={() => setOpen(false)}
@@ -98,11 +97,11 @@ const EditArticle = () => {
         size="small"
       >
         <Modal.Content>
-          <h1 data-cy="article-edited">
+          <h1 data-cy="response-message">
             You have successfully edited the article
           </h1>
         </Modal.Content>
-      </Modal> */}
+      </Modal>
     </Container>
   );
 };

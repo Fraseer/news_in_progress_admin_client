@@ -9,8 +9,8 @@ describe("Editor can edit a specific article ", () => {
       fixture: "articleExample.json",
       statusCode: 200,
     });
-    cy.intercept("PUT", "**/api/articles**", {
-      message: "You have successfully added My Title to the site",
+    cy.intercept("PUT", "**/api/articles/5**", {
+      message: "You have successfully edited the article",
     });
 
     cy.visit("/");
@@ -18,8 +18,8 @@ describe("Editor can edit a specific article ", () => {
     cy.get("[data-cy=title-5]").click();
   });
 
-  it("is expected to find a page header and 5 input fields", () => {
-    cy.get("[data-cy=edit-article").children().should("have.length", 5);
+  it("is expected to find a page header and 6 input fields", () => {
+    cy.get("[data-cy=edit-article").children().should("have.length", 6);
   });
 
   it("is expected to display the article to be edited", () => {
@@ -38,36 +38,22 @@ describe("Editor can edit a specific article ", () => {
     );
   });
 
-  it.only("is expected to allow editor to edit the title and lede", () => {
+  it("is expected to display a message upon submission", () => {
     cy.get("[data-cy=category-input]").as("selectCategory");
     cy.get("[data-cy=edit-title]").type(" lord's hippos");
     cy.get("[data-cy=edit-lede]").type("herd near Escobar's former ranch.");
     cy.get("@selectCategory").click();
     cy.get("@selectCategory").within(() => {
-      cy.get('span').contains('Business').click()
+      cy.get("span").contains("Business").click();
     });
-    cy.get("[data-cy=submit-btn]").click();
-
-    // cy.get("[data-cy=edit-title]")
-    //   .children()
-    //   .should("contain.value", " lord's hippos");
-    // cy.get("[data-cy=edit-lede]")
-    //   .children()
-    //   .should("contain.value", "herd near Escobar's former ranch.");
-  });
-
-  it("is expected to display a message upon submission", () => {
-    cy.get("[data-cy=edit-body]").type("adding text to body");
     cy.get("[data-cy=submit-btn]").click();
     cy.get("[data-cy=response-message]").should(
       "contain.text",
-      "You have successfully editted the article"
+      "You have successfully edited the article"
     );
   });
-});
 
-// cy.get("[data-cy=category-input]")
-//   .click()
-//   .within(() => {
-//     cy.contains("Business").click();
-//   });
+  it.only('is expected to redirect to the list of articles after submission', () => {
+    cy.get("[data-cy=submit-btn]").click();
+  });
+});
