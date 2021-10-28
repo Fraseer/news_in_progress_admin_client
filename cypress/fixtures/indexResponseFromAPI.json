@@ -7,7 +7,7 @@
       "journalists": ["Bob Journalist"],
       "created_at": "2021-10-05",
       "updated_at": "2021-10-05",
-      "category_name": "Science & Enviroment",
+      "category_name": "Science",
       "top_story": true,
       "published": true
       
@@ -19,7 +19,7 @@
       "journalists": ["Peter journalist and Pette Journalist"],
       "created_at": "2021-10-05",
       "updated_at": "2021-10-05",
-      "category_name": "Culture & Health",
+      "category_name": "Culture",
       "top_story": false,
       "published": true
     },
@@ -30,7 +30,7 @@
       "journalists": ["Jon Yeomans"],
       "created_at": "2021-10-06",
       "updated_at": "2021-10-06",
-      "category_name": "Culture & Health",
+      "category_name": "Culture",
       "top_story": false,
       "published": true
     },

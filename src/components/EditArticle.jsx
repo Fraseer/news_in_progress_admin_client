@@ -28,15 +28,15 @@ const EditArticle = () => {
   // }});
 
   const formattedCategories = categories.map((category, index) => {
-    return { key: index, value: category, text: category };
+    return { value: category, text: category };
   });
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-    debugger;
     const form = event.target;
     const title = form.title.value;
     const lede = form.lede.value;
+    debugger
     const category = form.category.value;
     const body = form.body.value;
     // dispatch({
@@ -72,7 +72,7 @@ const EditArticle = () => {
           placeholder="Category"
           options={formattedCategories}
           name="category"
-          defaultValue={article?.category}
+          defaultValue={article?.category_name}
         />
         <Form.TextArea
           data-cy="edit-body"
