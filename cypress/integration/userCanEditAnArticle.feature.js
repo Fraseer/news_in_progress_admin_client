@@ -55,5 +55,7 @@ describe("Editor can edit a specific article ", () => {
 
   it.only('is expected to redirect to the list of articles after submission', () => {
     cy.get("[data-cy=submit-btn]").click();
+    cy.wait(3000)
+    cy.url().should('contain', 'review-articles')
   });
 });
