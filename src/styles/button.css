@@ -31,7 +31,7 @@
 }
 
 .home-button::after {
-  background-color: rgb(7, 119, 139);
+  background-color: #244467;
   transform: translate(1.5rem, 1.5rem);
   z-index: -2;
 }
@@ -42,7 +42,7 @@
 }
 
 .home-button:hover::before {
-  background-color: rgb(7, 119, 139);
+  background-color: #244467;
 }
 
 .home-button:hover::after {

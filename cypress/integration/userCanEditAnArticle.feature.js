@@ -12,8 +12,16 @@ describe("Editor can edit a specific article ", () => {
     cy.intercept("PUT", "**/api/articles/5**", {
       message: "You have successfully edited the article",
     });
-
+    cy.intercept("POST", "**api/auth/sign_in", {
+      fixture: "authenticationSuccess.json",
+      headers: { uid: "user@email.com" },
+    });
+    cy.intercept("GET", "**api/auth/validate_token**", {
+      fixture: "authenticationSuccess.json",
+    });
+    
     cy.visit("/");
+    cy.get("[data-cy=btn-login]").click();
     cy.get("[data-cy=review-articles]").click();
     cy.get("[data-cy=title-5]").click();
   });

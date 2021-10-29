@@ -6,7 +6,6 @@ import logo from "../img/logo.png";
 const Header = () => {
   return (
     <Menu
-      inverted
       as={Link}
       to={{
         pathname: "/",

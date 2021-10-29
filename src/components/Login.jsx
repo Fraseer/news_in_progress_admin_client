@@ -1,6 +1,5 @@
 import React from "react";
 import { Container, Form, Button, Input, Grid, Image } from "semantic-ui-react";
-import { useTranslation } from "react-i18next";
 import { ToastContainer, toast } from "react-toastify";
 import { useDispatch } from "react-redux";
 import logo from "../img/logo-colourful.png";
@@ -10,7 +9,6 @@ import "react-toastify/dist/ReactToastify.css";
 
 const Login = () => {
   const dispatch = useDispatch();
-  const { t } = useTranslation();
 
   const handleSignIn = async (event) => {
     event.preventDefault();
@@ -20,7 +18,7 @@ const Login = () => {
 
     try {
       const signInStatus = await auth.signIn(email, password);
-      toast.success(t("signInMessage"));
+      toast.success("Successful Login");
 
       await delay(1000);
       dispatch({
@@ -28,15 +26,16 @@ const Login = () => {
         payload: signInStatus.data,
       });
     } catch (error) {
-      debugger;
       toast.error(error.response.data.errors[0]);
     }
   };
 
   return (
-    <Container padded column="equal" stackable columns="2">
-      <Grid>
-        <Grid.Row>
+    <Container padded column="equal">
+      <Grid stackable columns="2">
+        <Grid.Row />
+        <Grid.Row />
+        <Grid.Row verticalAlign="middle">
           <Grid.Column width="8">
             <Image src={logo} size="large" />
           </Grid.Column>
@@ -57,7 +56,7 @@ const Login = () => {
                 type="password"
               />
               <Form.Field
-                data-cy="btn-sign-in"
+                data-cy="btn-login"
                 control={Button}
                 content="Submit"
               />
@@ -65,17 +64,19 @@ const Login = () => {
           </Grid.Column>
         </Grid.Row>
       </Grid>
-      <ToastContainer
-        position="top-center"
-        autoClose={1500}
-        hideProgressBar={false}
-        newestOnTop={false}
-        closeOnClick
-        rtl={false}
-        pauseOnFocusLoss
-        draggable
-        pauseOnHover
-      />
+      <div data-cy="sign-in-toast">
+        <ToastContainer
+          position="top-center"
+          autoClose={1500}
+          hideProgressBar={false}
+          newestOnTop={false}
+          closeOnClick
+          rtl={false}
+          pauseOnFocusLoss
+          draggable
+          pauseOnHover
+        />
+      </div>
     </Container>
   );
 };

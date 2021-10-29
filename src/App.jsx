@@ -12,7 +12,7 @@ const App = () => {
   const { authenticated } = useSelector((state) => state);
   return (
     <BrowserRouter>
-      <Header />
+        <Header />
       {!authenticated ? (
         <Login />
       ) : (
