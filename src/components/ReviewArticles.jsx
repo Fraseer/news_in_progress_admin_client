@@ -8,18 +8,18 @@ import _ from "lodash";
 const ReviewArticles = () => {
   const { articles } = useSelector((state) => state);
   const dispatch = useDispatch();
-
+  
   const uniqueCategories = () => {
     let categories = articles.map((article) => {
-      return article.category_name;
-    });
+      return article.category.name; 
+    });    
     dispatch({ type: "SET_CATEGORIES", payload: _.uniq(categories) });
   };
-
+  
   useEffect(() => {
     Article.index();
   }, []);
-
+  
   useEffect(() => {
     uniqueCategories();
     // eslint-disable-next-line

@@ -18,7 +18,7 @@ const EditArticle = () => {
   }, [id]);
 
   useEffect(() => {
-    setSelectedCategory(article.category_name);
+    setSelectedCategory(article.category?.name);
   }, [article]);
 
   const formattedCategories = categories.map((category) => {
