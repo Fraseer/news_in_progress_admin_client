@@ -31,8 +31,8 @@ const Login = () => {
   };
 
   return (
-    <Container padded column="equal">
-      <Grid stackable columns="2">
+    <Container >
+      <Grid stackable columns="2" padded column="equal">
         <Grid.Row />
         <Grid.Row />
         <Grid.Row verticalAlign="middle">
