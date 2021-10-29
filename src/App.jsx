@@ -12,11 +12,11 @@ const App = () => {
   const { authenticated } = useSelector((state) => state);
   return (
     <BrowserRouter>
+      <Header />
       {!authenticated ? (
         <Login />
       ) : (
         <>
-          <Header />
           <Switch>
             <Route exact path="/" component={HomePage}></Route>
             <Route
