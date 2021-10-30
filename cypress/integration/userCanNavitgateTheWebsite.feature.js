@@ -5,7 +5,16 @@ describe("User can navigate to the app", () => {
       fixture: "indexResponseFromAPI.json",
       statusCode: 200,
     });
+    cy.intercept("POST", "**api/auth/sign_in", {
+      fixture: "authenticationSuccess.json",
+      headers: { uid: "user@email.com" },
+    });
+    cy.intercept("GET", "**api/auth/validate_token**", {
+      fixture: "authenticationSuccess.json",
+    });
+
     cy.visit("/");
+    cy.get("[data-cy=btn-login]").click();
   });
 
   describe("and on the home page", () => {

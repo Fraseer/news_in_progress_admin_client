@@ -5,11 +5,19 @@ describe("User can create an article", () => {
       message:
         "You have successfully added My Title to the site",
     });
-
+    cy.intercept("POST", "**api/auth/sign_in", {
+      fixture: "authenticationSuccess.json",
+      headers: { uid: "user@email.com" },
+    });
+    cy.intercept("GET", "**api/auth/validate_token**", {
+      fixture: "authenticationSuccess.json",
+    });
+    
     cy.visit("/");
+    cy.get("[data-cy=btn-login]").click();
     cy.get("[data-cy=add-article]").click();
   });
-
+  
   it("is expected to find a page header and 6 input fields", () => {
     cy.get("[data-cy=page-header]").should("contain", "Create Article");
     cy.get("[data-cy=create-article").children().should("have.length", 6);

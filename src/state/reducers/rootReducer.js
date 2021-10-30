@@ -15,6 +15,12 @@ const rootReducer = (state, action) => {
         ...state,
         categories: action.payload,
       };
+    case "SET_CURRENT_USER":
+      return {
+        ...state,
+        currentUser: action.payload,
+        authenticated: true,
+      };
     default:
       return state;
   }
