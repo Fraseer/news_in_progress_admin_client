@@ -17,7 +17,7 @@ const ReviewItem = ({ reviewItem }) => {
         </Link>
       </Table.Cell>
       <Table.Cell data-cy={`journalist-${reviewItem.id}`} textAlign="left">
-        {reviewItem.authors}
+        {reviewItem.authors.name}
       </Table.Cell>
       <Table.Cell data-cy={`created-at-${reviewItem.id}`}>
         {reviewItem.created_at}

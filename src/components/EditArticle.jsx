@@ -64,7 +64,7 @@ const EditArticle = () => {
               data-cy="edit-journalist"
               placeholder="Journalists"
               name="journalist"
-              defaultValue={article?.authors}
+              defaultValue={article?.name}
             />
             <Form.Input
               data-cy="edit-lede"
