@@ -17,12 +17,12 @@ describe("User can create an article", () => {
     cy.get("[data-cy=add-article]").click();
   });
 
-  it("is expected to find a page header and 7 input fields", () => {
+  it("is expected to find a page header and 6 input fields", () => {
     cy.get("[data-cy=page-header]").should("contain", "Create Article");
-    cy.get("[data-cy=create-article").children().should("have.length", 7);
+    cy.get("[data-cy=create-article").children().should("have.length", 6);
   });
 
-  it("is expected input the following data", () => {
+  it("is expected to input the following data", () => {
     cy.get("[data-cy=title-input]").type("My Title");
     cy.get("[data-cy=journalist-input]").type("Frank FakeName");
     cy.get("[data-cy=lede-input]").type("What going on");
