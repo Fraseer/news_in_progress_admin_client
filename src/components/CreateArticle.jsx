@@ -3,21 +3,30 @@ import { useForm } from "react-hook-form";
 import { Header, Container, Form, Button, Modal } from "semantic-ui-react";
 import { Article } from "../modules/apiHelper";
 import CategoryList from "./CategoryList";
+import toBase64 from "../modules/toBase64";
 
 const CreateArticle = () => {
   const [open, setOpen] = useState(false);
+  const [selectedImage, setSelectedImage] = useState();
+  const { register, handleSubmit, setValue } = useForm();
 
   useEffect(() => {
     register("title");
     register("authors");
     register("lede");
-    register("category");
+    register("category_name");
     register("body");
+    register("image");
     // eslint-disable-next-line
   }, []);
 
-  const { register, handleSubmit, setValue } = useForm();
+  const selectImage = async (event) => {
+    let encodedImage = await toBase64(event.target.files[0]);
+    setSelectedImage(encodedImage);
+  };
+
   const onSubmit = (article) => {
+    article.image = selectedImage;
     Article.create({ article }).then((response) => {
       if (
         response.data.message ===
@@ -69,16 +78,24 @@ const CreateArticle = () => {
             setValue(name, value);
           }}
         />
+        <Form.Group>
         <Form.Select
           data-cy="category-input"
           placeholder="Category"
           options={categoryOptions}
-          name="category"
+          name="category_name"
           value={categoryOptions.value}
           onChange={(e, { name, value }) => {
             setValue(name, value);
           }}
         />
+        <Form.Input
+          data-cy="article-image"
+          type="file"
+          name="image"
+          onChange={selectImage}
+        />
+        </Form.Group>
         <Form.TextArea
           data-cy="body-input"
           placeholder="Body"
