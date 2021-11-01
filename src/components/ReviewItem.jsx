@@ -1,8 +1,18 @@
-import React from "react";
+import React, {useState} from "react";
 import { Table, Checkbox } from "semantic-ui-react";
 import { Link } from "react-router-dom";
+import { Article } from "../modules/apiHelper";
 
 const ReviewItem = ({ reviewItem }) => {
+  const [publishedStatus, setPublishedStatus] = useState(false);
+
+  const changePublished = (publishedStatus) => {
+    setPublishedStatus(true)
+
+    Article.update(publishedStatus)
+
+  }
+
   return (
     <Table.Row data-cy={`row-${reviewItem.id}`} textAlign="center">
       <Table.Cell
@@ -23,7 +33,11 @@ const ReviewItem = ({ reviewItem }) => {
         {reviewItem.created_at}
       </Table.Cell>
       <Table.Cell data-cy={`published-${reviewItem.id}`}>
-        <Checkbox toggle defaultChecked={reviewItem.published} />
+        <Checkbox
+          toggle
+          defaultChecked={reviewItem.published}
+          onClick={() => changePublished}
+        />
       </Table.Cell>
     </Table.Row>
   );

@@ -43,4 +43,8 @@ describe("A list of articles displayed on the review page", () => {
       cy.get("[data-cy=published-1]").should("be.visible");
     });
   });
+
+  it.only('is expected to change the published status when the slider is clicked', () => {
+    cy.get("[data-cy=published-5]").children().first().click()
+  });
 });
