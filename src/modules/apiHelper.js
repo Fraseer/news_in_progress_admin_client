@@ -6,8 +6,7 @@ const Article = {
     article["article"]["author_ids"] = [];
     const params = article;
     const headers = JSON.parse(localStorage.getItem("J-tockAuth-Storage"));
-    const response = await axios.post("/api/articles/", {
-      params: params,
+    const response = await axios.post("/api/articles/", params, {
       headers: headers,
     });
     return response;
@@ -35,10 +34,13 @@ const Article = {
   async update(article) {
     const params = article;
     const headers = JSON.parse(localStorage.getItem("J-tockAuth-Storage"));
-    let response = await axios.put(`/api/articles/${article.article.id}`, {
-      params: params,
-      headers: headers,
-    });
+    let response = await axios.put(
+      `/api/articles/${article.article.id}`,
+      params,
+      {
+        headers: headers,
+      }
+    );
     return response.data.message;
   },
 };

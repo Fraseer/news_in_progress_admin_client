@@ -4,11 +4,11 @@ import _ from "lodash";
 const CategoryList = () => {
   const options = [
     "World News",
-    "Science & Enviroment",
+    "Science",
     "Business",
     "Tech",
     "Entertainment",
-    "Culture & Health",
+    "Culture",
     "Sports",
   ];
 

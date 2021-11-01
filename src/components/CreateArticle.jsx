@@ -14,7 +14,7 @@ const CreateArticle = () => {
     register("title");
     register("authors");
     register("lede");
-    register("category");
+    register("category_name");
     register("body");
     register("image");
     // eslint-disable-next-line
@@ -83,7 +83,7 @@ const CreateArticle = () => {
           data-cy="category-input"
           placeholder="Category"
           options={categoryOptions}
-          name="category"
+          name="category_name"
           value={categoryOptions.value}
           onChange={(e, { name, value }) => {
             setValue(name, value);
